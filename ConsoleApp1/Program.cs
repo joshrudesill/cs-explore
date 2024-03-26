@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Drawing;
+using System.IO.Compression;
 using System.Runtime.InteropServices;
 
 Console.WriteLine("Hello, World!");
@@ -51,6 +52,87 @@ Myself[] arrOfPeople = {new Myself("green", 100, "Jane Doe"), new Myself("purple
 foreach (Myself person in arrOfPeople) 
 {
       person.TellMeAboutYourself();
+}
+
+
+
+// Opposites Attract
+// bool test1 = LoveDetector.lovefunc(1,2);
+// bool test2 = LoveDetector.lovefunc(10,20);
+// Console.WriteLine(test1);
+// Console.WriteLine(test2);
+
+// // You only need one
+// Console.WriteLine(Kata.Check([80, 117, 115, 104, 45, 85, 112, 115], 45));
+// Kata.Check(["what", "a", "great", "kata"], "kat");
+
+// //Sum of positives
+// Console.WriteLine(Sum.PositiveSum([1, 2, 3, 4, 5]));
+// Console.WriteLine(Sum.PositiveSum([1, 2, 3, 4, -5]));
+
+// https://www.codewars.com/kata/546e2562b03326a88e000020 - Square every digit
+Console.WriteLine(Square.squareDigits(123));
+Console.WriteLine(Square.squareDigits(9119));
+
+// https://www.codewars.com/kata/56747fd5cb988479af000028 - Get middle char
+
+Console.WriteLine(Middle.middleChar("testing"));
+Console.WriteLine(Middle.middleChar("test"));
+public class Middle
+{
+    public static string middleChar(string v)
+    { 
+        if(v.Length % 2 == 0) {
+            return $"{v.ElementAt(v.Length / 2 -1)}{v.ElementAt(v.Length / 2)}";
+        } else {
+            return $"{v.ElementAt(v.Length / 2)}";
+        }
+    }
+}
+public class LoveDetector
+{
+    public static bool lovefunc(int flower1, int flower2)
+    { 
+        if(flower1 % 2 != flower2 % 2) {
+            return true;
+        }
+        return false;
+    }
+}
+
+public class Kata
+{
+  public static bool Check(object[] a, object x)
+  {
+    return a.Contains(x);
+  }
+}
+public class Sum
+{
+  public static int PositiveSum(int[] arr)
+  {
+    int solution = 0;
+    foreach(int n in arr) {
+        if(n >= 0) {
+            solution += n;
+        };
+    }
+    return solution;
+  }
+}
+public class Square
+{
+  public static int squareDigits(int n)
+  {
+    string answer = "";
+    string pre = n.ToString();
+    foreach(char number in pre) {
+        int p = int.Parse(number.ToString());  
+        int x = p * p;
+        answer += x.ToString();
+    }
+    return int.Parse(answer);
+  }
 }
 class Myself {
     public string favColor;
